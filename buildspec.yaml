@@ -1,15 +1,23 @@
 version: 0.2
+
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
+  pre_build:
     commands:
       - echo Installing dependencies...
       - npm install
   build:
     commands:
-      - echo Building the application...
+      - echo Running build process...
+      - npm run build
   post_build:
     commands:
-      - echo Build complete
+      - echo Packaging files...
+      - zip -r my-app.zip .  # Create an artifact zip
+
 artifacts:
   files:
-    - '**/*'
+    - my-app.zip  # Upload this file to S3
+  discard-paths: yes
