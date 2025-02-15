@@ -10,8 +10,7 @@ phases:
       - npm install
   build:
     commands:
-      - echo Running build process...
-      - npm run build
+      -  echo No build step required
   post_build:
     commands:
       - echo Packaging files...
